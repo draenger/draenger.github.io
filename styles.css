@@ -386,6 +386,21 @@ footer {
   color: var(--muted);
 }
 footer span { color: var(--cyan-dim); }
+.lang-switch {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: .75rem;
+  letter-spacing: .1em;
+}
+.lang-switch a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+  cursor: pointer;
+}
+.lang-switch a:hover { color: var(--cyan); }
+.lang-active { color: var(--cyan); }
+.lang-sep { color: var(--border); margin: 0 6px; }
 
 /* ── DIVIDER ── */
 .divider {
