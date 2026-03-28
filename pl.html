@@ -23,6 +23,9 @@
   <nav>
     <div class="wrap">
       <div class="nav-logo">DK<span>.</span>DEV</div>
+      <button class="hamburger" onclick="this.classList.toggle('active');this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul>
         <li><a href="#projects">Projekty</a></li>
         <li><a href="#skills">Technologie</a></li>
@@ -40,8 +43,9 @@
       <h1>Tworzę systemy,<br>które <em>wchodzą na prod</em>.<span class="blink"></span></h1>
       <p class="hero-sub">
         Jestem <strong>Daniel Kasprzyk</strong> — developer ze <strong>Śląska</strong>
-        z ponad 5-letnim doświadczeniem komercyjnym, ostatnie 3 lata głównie w <strong>AI/ML</strong>.
-        Na co dzień buduję systemy agentowe AI, po godzinach — własne produkty SaaS.
+        z ponad 5-letnim doświadczeniem komercyjnym. Od 3 lat interesuję się i eksperymentuję z <strong>Generative AI</strong>
+        — od roku buduję komercyjne rozwiązania oparte o GenAI.
+        Po godzinach tworzę własne produkty: od SaaS-ów, przez osobistego asystenta, po narzędzia open source.
       </p>
       <div class="hero-chips">
         <span class="chip">Python</span>
@@ -109,9 +113,9 @@
         </div>
 
         <div class="card reveal">
-          <span class="card-status status-wip">Closed source</span>
+          <span class="card-status status-live">Open source</span>
           <h3>Whisperio</h3>
-          <p>Dyktowanie globalne na Windows. Wciskasz skrót &rarr; mówisz &rarr; tekst ląduje w dowolnej aplikacji. Płacisz za użycie, bez subskrypcji. Rozważam otwarcie źródeł.</p>
+          <p>Dyktowanie globalne na Windows. Wciskasz skrót &rarr; mówisz &rarr; tekst ląduje w dowolnej aplikacji. Płacisz za użycie, bez subskrypcji.</p>
           <div class="card-stack">
             <span class="tag">Windows</span>
             <span class="tag">STT</span>
@@ -191,12 +195,13 @@
         <div class="about-text reveal">
           <p>
             Senior Software Developer ze <strong>Śląska</strong>.
-            Ponad 5 lat w branży, ostatnie 3 głównie w <strong>AI/ML i systemach agentowych</strong>.
+            Ponad 5 lat w branży. Od 3 lat interesuję się i eksperymentuję z <strong>Generative AI</strong>,
+            od roku buduję komercyjne rozwiązania GenAI.
           </p>
           <p>
             Na etacie stawiam wieloagentowe AI na <strong>Microsoft Agentic Framework</strong>.
-            Po godzinach rozwijam własne produkty i piszę framework agentowy
-            od zera — bo czasem trzeba zbudować narzędzie, żeby móc z niego korzystać.
+            Po godzinach rozwijam <strong>Rezme</strong> (platforma CV napędzana AI),
+            osobistego asystenta głosowego i narzędzia open source jak Whisperio.
           </p>
           <p>
             Szukam ludzi, którzy też budują w AI — do wymiany doświadczeń,
@@ -211,7 +216,7 @@
           </div>
           <div class="stat">
             <span class="stat-num">3</span>
-            <div class="stat-label">Lata w AI/ML</div>
+            <div class="stat-label">Lata w Generative AI</div>
           </div>
           <div class="stat">
             <span class="stat-num">3</span>
