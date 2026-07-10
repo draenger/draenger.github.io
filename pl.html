@@ -1,375 +1,454 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daniel Kasprzyk — Senior Software Developer</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <meta property="og:title" content="Daniel Kasprzyk — Senior Software Developer">
-  <meta property="og:description" content="Tworzę systemy agentowe AI i własne produkty SaaS. Python, .NET, Azure AI, React.">
-  <meta property="og:image" content="https://draenger.github.io/logo.png">
-  <meta property="og:url" content="https://draenger.github.io/pl.html">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="lang.js"></script>
-</head>
-<body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Kasprzyk — Senior Software Developer</title>
+<meta name="description" content="Senior Software Developer ze Śląska. 5+ lat komercyjnego doświadczenia, 3 lata w Generative AI.">
+<link rel="icon" type="image/png" href="logo.png">
+<meta property="og:title" content="Daniel Kasprzyk — Senior Software Developer">
+<meta property="og:description" content="Buduję systemy agentowe AI i wypuszczam własne produkty. Python, .NET, Azure AI, React.">
+<meta property="og:image" content="https://draenger.github.io/logo.png">
+<meta property="og:url" content="https://danielkasprzyk.com/pl.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="lang.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #07080d; }
+  body { font-family: 'Space Grotesk', sans-serif; color: #e9ecf5; -webkit-font-smoothing: antialiased; }
+  a { color: #9db8ff; text-decoration: none; }
+  a:hover { color: #cfe0ff; }
+  ::selection { background: rgba(157,184,255,.25); }
+  html { scroll-behavior: smooth; }
 
-  <canvas id="stars"></canvas>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-link { color: #8a90a8; transition: color .2s; }
+  .nav-link:hover { color: #e9ecf5; }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: #07080d; background: #e9ecf5;
+    padding: 15px 32px; border-radius: 2px;
+    transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: #ffffff; transform: translateY(-2px); color: #07080d; }
+
+  .btn-outline {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: #e9ecf5; border: 1px solid rgba(233,236,245,.25);
+    padding: 14px 32px; border-radius: 2px;
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: rgba(157,184,255,.7); color: #cfe0ff; }
+
+  .project-card {
+    border: 1px solid rgba(233,236,245,.09);
+    border-radius: 4px; padding: 36px;
+    transition: border-color .2s, transform .2s;
+  }
+  .project-card:hover { border-color: rgba(157,184,255,.35); transform: translateY(-3px); }
+
+  .small-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em;
+    color: #9db8ff; border: 1px solid rgba(157,184,255,.3);
+    padding: 10px 20px; border-radius: 2px;
+    transition: border-color .2s, color .2s;
+  }
+  .small-link:hover { border-color: #9db8ff; color: #cfe0ff; }
+
+  .lang-switch { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em; }
+  .lang-switch .lang-active { color: #9db8ff; }
+  .lang-switch .lang-sep { color: #565d75; margin: 0 8px; }
+  .lang-switch a { color: #565d75; }
+  .lang-switch a:hover { color: #cfe0ff; }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px !important; }
+    .nav-links { gap: 20px !important; }
+    .hero-btns { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body style="background:#07080d; min-height:100vh; overflow-x:hidden">
 
   <!-- NAV -->
-  <nav>
-    <div class="wrap">
-      <div class="nav-logo">DK<span>.</span>DEV</div>
-      <button class="hamburger" onclick="this.classList.toggle('active');this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul>
-        <li><a href="#projects">Projekty</a></li>
-        <li><a href="#skills">Technologie</a></li>
-        <li><a href="#about">O mnie</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-      </ul>
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:linear-gradient(180deg, rgba(7,8,13,.85), rgba(7,8,13,0)); backdrop-filter:blur(2px)">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.22em; color:#e9ecf5">DK<span style="color:#9db8ff">·</span>DEV</div>
+    <div class="nav-links" style="display:flex; gap:36px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase">
+      <a href="#projects" class="nav-link">Projekty</a>
+      <a href="#skills" class="nav-link">Stack</a>
+      <a href="#about" class="nav-link">O mnie</a>
+      <a href="#contact" style="color:#e9ecf5; border-bottom:1px solid rgba(157,184,255,.5); padding-bottom:2px">Kontakt</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section id="hero">
-    <div id="hero-galaxy" class="hero-galaxy" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="hero-layout">
-        <div class="hero-copy">
-          <p class="hero-tag">Senior Software Developer</p>
-          <h1>Tworzę systemy,<br>które <em>wchodzą na prod</em>.<span class="blink"></span></h1>
-          <p class="hero-sub">
-            Jestem <strong>Daniel Kasprzyk</strong> — developer ze <strong>Śląska</strong>
-            z ponad 5-letnim doświadczeniem komercyjnym. Od 3 lat interesuję się i eksperymentuję z <strong>Generative AI</strong>
-            — od roku buduję komercyjne rozwiązania oparte o GenAI.
-            Po godzinach tworzę własne produkty: od SaaS-ów, przez osobistego asystenta, po narzędzia open source.
-          </p>
-          <div class="hero-chips">
-            <span class="chip">Python</span>
-            <span class="chip">.NET 10</span>
-            <span class="chip">Azure AI</span>
-            <span class="chip">Microsoft Agentic Framework</span>
-            <span class="chip">AutoGen</span>
-            <span class="chip">RAG</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">React</span>
-            <span class="chip">pgvector</span>
-            <span class="chip">Neo4j</span>
-          </div>
-          <div class="hero-cta">
-            <a href="https://github.com/draenger" class="btn btn-primary" target="_blank">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-              GitHub
-            </a>
-            <a href="#projects" class="btn btn-ghost">Zobacz projekty</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="hero-holo-frame">
-            <div class="hero-holo-header">
-              <span>augmentation / 3d</span>
-              <span>aktywny</span>
-            </div>
-            <canvas id="hero-holo-canvas" class="hero-holo" aria-hidden="true"></canvas>
-            <div class="hero-holo-grid"></div>
-            <div class="hero-holo-corners"></div>
-          </div>
-        </div>
+  <section style="position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden">
+    <canvas id="galaxy-canvas" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, rgba(7,8,13,0) 0%, rgba(7,8,13,.25) 55%, rgba(7,8,13,.92) 100%); pointer-events:none"></div>
+
+    <div style="position:relative; z-index:2; text-align:center; padding:0 24px; max-width:920px; animation:fadeUp .9s .2s both">
+      <p style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:#9db8ff; margin:0 0 28px">Senior Software Developer — Śląsk, PL</p>
+      <h1 style="font-size:clamp(48px, 7.5vw, 96px); font-weight:600; line-height:1.02; letter-spacing:-.03em; margin:0; color:#f4f6fc">Buduję systemy,<br>które <em style="font-style:normal; background:linear-gradient(90deg, #9db8ff, #c9b8ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent">naprawdę wchodzą na produkcję</em>.</h1>
+      <p style="font-size:clamp(16px, 1.6vw, 19px); line-height:1.7; color:#a8aec4; max-width:560px; margin:32px auto 0">
+        Jestem <strong style="color:#e9ecf5; font-weight:500">Daniel Kasprzyk</strong>. 5+ lat tworzenia oprogramowania,
+        3 lata w Generative AI — w dzień komercyjne systemy multi-agentowe,
+        po godzinach własne produkty.
+      </p>
+      <div class="hero-btns" style="display:flex; gap:14px; justify-content:center; margin-top:44px; flex-wrap:wrap">
+        <a href="https://github.com/draenger" target="_blank" class="btn-primary">GitHub ↗</a>
+        <a href="#projects" class="btn-outline">Zobacz projekty</a>
       </div>
     </div>
+
+    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.3em; color:#565d75; text-transform:uppercase; z-index:2">przewiń ↓</div>
   </section>
 
+  <!-- MARQUEE STACK LINE -->
+  <div style="border-top:1px solid rgba(157,184,255,.1); border-bottom:1px solid rgba(157,184,255,.1); padding:18px 0; overflow:hidden; white-space:nowrap">
+    <div style="display:flex; gap:56px; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#565d75; flex-wrap:nowrap">
+      <span>Python</span><span>·</span><span>.NET 10</span><span>·</span><span>Azure AI</span><span>·</span><span>Agentic Framework</span><span>·</span><span>RAG</span><span>·</span><span>React</span><span>·</span><span>pgvector</span><span>·</span><span>Neo4j</span>
+    </div>
+  </div>
 
   <!-- PROJECTS -->
-  <section id="projects">
-    <div class="wrap">
-      <p class="section-label reveal">Projekty</p>
-      <h2 class="reveal">Nad czym pracuję</h2>
+  <section id="projects" style="max-width:1140px; margin:0 auto; padding:140px 32px 80px">
+    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">01</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Co zbudowałem</h2>
+    </div>
 
-      <div class="projects-grid">
-
-        <div class="card reveal">
-          <span class="card-status status-wip">Przed premierą</span>
-          <h3>Rezme</h3>
-          <p>Platforma CV napędzana AI. Wrzucasz ofertę pracy &rarr; dostajesz dopasowane CV, list motywacyjny i ocenę dopasowania. Multi-agentowy pipeline pod spodem.</p>
-          <div class="card-stack">
-            <span class="tag">React 19</span>
-            <span class="tag">.NET 10</span>
-            <span class="tag">Python</span>
-            <span class="tag">Azure AI</span>
-            <span class="tag">pgvector</span>
-            <span class="tag">Langfuse</span>
-          </div>
-          <div class="card-links">
-            <a href="https://rezme.dev" class="card-link" target="_blank">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              rezme.dev
-            </a>
-          </div>
+    <!-- Featured -->
+    <div style="border:1px solid rgba(157,184,255,.18); border-radius:4px; padding:48px; margin-bottom:20px; background:linear-gradient(135deg, rgba(157,184,255,.06), rgba(201,184,255,.03) 60%, transparent)">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px">
+        <div style="max-width:600px">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff">Wyróżnione · Przed premierą</span>
+          <h3 style="font-size:36px; font-weight:600; margin:14px 0 12px; color:#f4f6fc; letter-spacing:-.02em">Rezme</h3>
+          <p style="font-size:16px; line-height:1.7; color:#a8aec4; margin:0">Platforma CV napędzana AI. Wrzucasz ofertę pracy → AI dopasowuje CV, generuje list motywacyjny i ocenia dopasowanie. Pipeline multi-agentowy, zbudowany żeby wejść na produkcję.</p>
         </div>
-
-        <div class="card reveal">
-          <span class="card-status status-dev">Osobisty &middot; Closed source</span>
-          <h3>Suzie AI</h3>
-          <p>Mój osobisty Jarvis. Desktopowy asystent głosowy z wieloma agentami, STT/TTS, RAG, integracją ze Spotify i obsługą OpenAI / Anthropic / Gemini / Ollama. Oparty o własny framework agentowy pisany od zera.</p>
-          <div class="card-stack">
-            <span class="tag">Electron</span>
-            <span class="tag">React</span>
-            <span class="tag">Python</span>
-            <span class="tag">Custom Agent Framework</span>
-            <span class="tag">ElevenLabs</span>
-            <span class="tag">Neo4j</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-live">Open source</span>
-          <h3>Whisperio</h3>
-          <p>Dyktowanie globalne na Windows. Wciskasz skrót &rarr; mówisz &rarr; tekst ląduje w dowolnej aplikacji. Płacisz za użycie, bez subskrypcji.</p>
-          <div class="card-stack">
-            <span class="tag">Windows</span>
-            <span class="tag">STT</span>
-            <span class="tag">Python</span>
-            <span class="tag">Pay-per-use</span>
-          </div>
-          <div class="card-links">
-            <a href="/whisperio/" class="card-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              whisperio
-            </a>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-dev">Osobisty &middot; W budowie</span>
-          <h3>Kadr</h3>
-          <p>Natywny edytor pionowego wideo na urządzenia Apple z AI on-device. Zbudowany pod workflow 9:16, szybkie cięcia i prosty, Apple-first proces montażu.</p>
-          <div class="card-stack">
-            <span class="tag">Swift 6</span>
-            <span class="tag">iOS / iPadOS / macOS</span>
-            <span class="tag">AI on-device</span>
-            <span class="tag">Frameworki Apple</span>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/draenger/kadr" class="card-link" target="_blank" rel="noopener">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-              github.com/draenger/kadr
-            </a>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-live">Public site</span>
-          <h3>AI News Digest</h3>
-          <p>Darmowa publiczna appka do czytania i przeglądania newsów o AI i LLM z internetu. Scrapuje źródła, filtruje sygnał i publikuje dzienne oraz tygodniowe digesty w stylu Ledger.</p>
-          <div class="card-stack">
-            <span class="tag">.NET 10</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">Scraping</span>
-            <span class="tag">Curation</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-dev">Osobisty &middot; Husar</span>
-          <h3>Husar</h3>
-          <p>Offline-first tracker fitness na iOS i Apple Watch, oparty o modularne API w .NET. Logowanie treningów, plany, coaching AI, społeczność i analityka progresu.</p>
-          <div class="card-stack">
-            <span class="tag">SwiftUI</span>
-            <span class="tag">Apple Watch</span>
-            <span class="tag">.NET API</span>
-            <span class="tag">Offline-first</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-dev">Prywatny &middot; Full stack</span>
-          <h3>Cashflow</h3>
-          <p>Wielosesyjny produkt finansowy z backendem Fastify, webem w React i mobilnym klientem Expo. Oparty o workflow dokumentów, joby w tle i wspólną powierzchnię produktu.</p>
-          <div class="card-stack">
-            <span class="tag">React</span>
-            <span class="tag">Fastify</span>
-            <span class="tag">Expo</span>
-            <span class="tag">Prisma</span>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <span class="card-status status-dev">Prywatny &middot; Aplikacja webowa</span>
-          <h3>Lux</h3>
-          <p>Produkt webowy w React i TypeScript, osobna powierzchnia w portfolio. Nadal prywatny, ale wart zaznaczenia obok reszty stacku.</p>
-          <div class="card-stack">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Vite</span>
-            <span class="tag">Web</span>
-          </div>
-        </div>
-
+        <a href="https://rezme.dev" target="_blank" class="small-link">rezme.dev ↗</a>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:28px">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">React 19</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">.NET 10</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Python</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Azure AI</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">pgvector</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Langfuse</span>
       </div>
     </div>
-  </section>
 
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px">
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9db8ff">Strona publiczna</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">AI News Digest</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Darmowa aplikacja do przeglądania newsów o AI i LLM. Scrapuje źródła, filtruje sygnał, publikuje dzienne i tygodniowe podsumowania.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">.NET 10</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Next.js</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Scraping</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9db8ff">Open source</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Whisperio</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Globalne dyktowanie dla Windows. Skrót klawiszowy → mówisz → tekst ląduje w dowolnej aplikacji. Płatność za użycie, bez subskrypcji.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Windows</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">STT</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Python</span>
+        </div>
+        <a href="/whisperio/" class="small-link">whisperio ↗</a>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff">Przed premierą</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Husar</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Offline-first tracker fitness na iOS i Apple Watch, oparty o modularne API w .NET. Logowanie treningów, coaching AI, analityka postępów.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">SwiftUI</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Apple Watch</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">.NET API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Osobisty · Closed source</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Suzie AI</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Mój osobisty Jarvis. Desktopowy asystent głosowy z architekturą multi-agentową, STT/TTS, RAG, integracją Spotify. Zbudowany na własnym frameworku agentowym pisanym od zera.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Electron</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Python</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Neo4j</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">ElevenLabs</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Osobisty · W budowie</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Kadr</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Natywny edytor wideo pionowego na urządzenia Apple z AI on-device. Zbudowany pod format 9:16 i szybką, czystą edycję w stylu Apple.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Swift 6</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">iOS / macOS</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">AI on-device</span>
+        </div>
+        <a href="https://github.com/draenger/kadr" target="_blank" rel="noopener" class="small-link">github ↗</a>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Prywatny · Full stack</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Cashflow</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Wielopowierzchniowy produkt finansowy: backend Fastify, aplikacja webowa React, klient mobilny Expo. Obieg dokumentów i zadania w tle.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">React</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Fastify</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Expo</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Prywatny · Aplikacja web</span>
+        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Lux</h3>
+        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Produkt webowy w React/TypeScript zbudowany jako osobna powierzchnia w portfolio. Wciąż prywatny, ale to część stacku.</p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">React</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">TypeScript</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Vite</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <p class="section-label reveal">Stack</p>
-      <h2 class="reveal">Czym się posługuję</h2>
-      <div class="skills-grid reveal">
-        <div class="skill-block">
-          <h4>AI / Agenci</h4>
-          <ul class="skill-list">
-            <li>Microsoft Agentic Framework</li>
-            <li>AutoGen</li>
-            <li>Azure AI Foundry</li>
-            <li>Systemy RAG</li>
-            <li>Własny Agent Framework</li>
-            <li>OpenTelemetry</li>
-          </ul>
+  <section id="skills" style="max-width:1140px; margin:0 auto; padding:80px 32px">
+    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">02</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Z czym pracuję</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px">
+      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
+        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">AI / Agenci</h4>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
+          <span>Microsoft Agentic Framework</span>
+          <span>AutoGen</span>
+          <span>Azure AI Foundry</span>
+          <span>Systemy RAG</span>
+          <span>Własny framework agentowy</span>
+          <span>OpenTelemetry</span>
         </div>
-        <div class="skill-block">
-          <h4>Backend</h4>
-          <ul class="skill-list">
-            <li>Python / FastAPI</li>
-            <li>.NET 10 / C#</li>
-            <li>PostgreSQL + pgvector</li>
-            <li>Neo4j</li>
-            <li>RabbitMQ</li>
-          </ul>
+      </div>
+      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
+        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Backend</h4>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
+          <span>Python / FastAPI</span>
+          <span>.NET 10 / C#</span>
+          <span>PostgreSQL + pgvector</span>
+          <span>Neo4j</span>
+          <span>RabbitMQ</span>
         </div>
-        <div class="skill-block">
-          <h4>Frontend</h4>
-          <ul class="skill-list">
-            <li>React 19</li>
-            <li>TypeScript</li>
-            <li>Electron</li>
-            <li>Tailwind CSS</li>
-          </ul>
+      </div>
+      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
+        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Frontend</h4>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
+          <span>React 19</span>
+          <span>TypeScript</span>
+          <span>Electron</span>
+          <span>Tailwind CSS</span>
         </div>
-        <div class="skill-block">
-          <h4>Narzędzia</h4>
-          <ul class="skill-list">
-            <li>Claude Code</li>
-            <li>Cursor</li>
-            <li>Docker</li>
-            <li>Azure</li>
-            <li>CI/CD</li>
-          </ul>
+      </div>
+      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
+        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Narzędzia</h4>
+        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
+          <span>Claude Code</span>
+          <span>Cursor</span>
+          <span>Docker</span>
+          <span>Azure</span>
+          <span>CI/CD</span>
         </div>
       </div>
     </div>
   </section>
-
 
   <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap">
-      <p class="section-label reveal">O mnie</p>
-      <h2 class="reveal">Kim jestem</h2>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>
-            Senior Software Developer ze <strong>Śląska</strong>.
-            Ponad 5 lat w branży. Od 3 lat interesuję się i eksperymentuję z <strong>Generative AI</strong>,
-            od roku buduję komercyjne rozwiązania GenAI.
-          </p>
-          <p>
-            Na etacie stawiam wieloagentowe AI na <strong>Microsoft Agentic Framework</strong>.
-            Po godzinach rozwijam <strong>Rezme</strong> (platforma CV napędzana AI),
-            osobistego asystenta głosowego i narzędzia open source jak Whisperio.
-          </p>
-          <p>
-            Szukam ludzi, którzy też budują w AI — do wymiany doświadczeń,
-            współpracy albo po prostu dobrej rozmowy. Pewnie mam ADHD
-            albo za dużo darmowych tokenów na Claude. &#x1F605;
-          </p>
+  <section id="about" style="max-width:1140px; margin:0 auto; padding:80px 32px">
+    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">03</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Kim jestem</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:56px; align-items:start">
+      <div style="font-size:16px; line-height:1.85; color:#a8aec4">
+        <p style="margin:0 0 18px">Senior Software Developer ze <strong style="color:#e9ecf5; font-weight:500">Śląska</strong>. 5+ lat w branży, 3 lata eksploracji Generative AI, ostatni rok budowania komercyjnych rozwiązań GenAI.</p>
+        <p style="margin:0 0 18px">W dzień: firmowe systemy multi-agentowe na <strong style="color:#e9ecf5; font-weight:500">Microsoft Agentic Framework</strong>. Po godzinach: <strong style="color:#e9ecf5; font-weight:500">Rezme</strong>, osobisty asystent głosowy i narzędzia open-source rozwiązujące realne problemy.</p>
+        <p style="margin:0">Szukam ludzi budujących projekty AI, współpracowników i dobrego networkingu w tej przestrzeni.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(233,236,245,.09); border:1px solid rgba(233,236,245,.09)">
+        <div style="background:#07080d; padding:32px 24px; text-align:center">
+          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">5+</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Lat komercyjnie</div>
         </div>
-        <div class="about-stats reveal">
-          <div class="stat">
-            <span class="stat-num">5+</span>
-            <div class="stat-label">Lat doświadczenia</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num">3</span>
-            <div class="stat-label">Lata w Generative AI</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num">8</span>
-            <div class="stat-label">Wyróżnione projekty</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num">&infin;</span>
-            <div class="stat-label">Pomysłów w backlogu</div>
-          </div>
+        <div style="background:#07080d; padding:32px 24px; text-align:center">
+          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">3</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Lata w GenAI</div>
+        </div>
+        <div style="background:#07080d; padding:32px 24px; text-align:center">
+          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">8</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Wyróżnionych projektów</div>
+        </div>
+        <div style="background:#07080d; padding:32px 24px; text-align:center">
+          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">∞</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Pomysłów w backlogu</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="signals">
-    <div class="wrap">
-      <p class="section-label reveal">Signals</p>
-      <h2 class="reveal">Jak pracuję</h2>
-      <div class="signals-strip reveal">
-        <div class="signal">
-          <span class="signal-kicker">01</span>
-          <h3>Architektura najpierw</h3>
-          <p>Systemy, które skaluje się bez ceremonii. Jasne granice, czyste przepływy, mniej niespodzianek.</p>
-        </div>
-        <div class="signal">
-          <span class="signal-kicker">02</span>
-          <h3>AI tam, gdzie ma sens</h3>
-          <p>Agentic UX, retrieval, orkiestracja i ewaluacja tylko wtedy, gdy realnie poprawiają produkt.</p>
-        </div>
-        <div class="signal">
-          <span class="signal-kicker">03</span>
-          <h3>Polish is leverage</h3>
-          <p>Mikrointerakcje, motion i hierarchia layoutu, które robią różnicę między „zrobione” a „dopracowane”.</p>
-        </div>
+  <!-- HOW I BUILD -->
+  <section style="max-width:1140px; margin:0 auto; padding:80px 32px">
+    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">04</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Jak buduję</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:48px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">01 —</div>
+        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">Najpierw architektura</h3>
+        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Systemy, które skalują się bez zamieniania się w ceremonię. Jasne granice, czyste przepływy, mniej niespodzianek.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">02 —</div>
+        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">AI tam, gdzie ma sens</h3>
+        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Agentowy UX, retrieval, orkiestracja i ewaluacja — tylko wtedy, gdy naprawdę poprawiają produkt.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">03 —</div>
+        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">Dopracowanie to dźwignia</h3>
+        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Mikrointerakcje, ruch i hierarchia układu, które sprawiają, że produkt jest dopracowany, a nie sklecony.</p>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <p class="section-label">Kontakt</p>
-      <h2>Zróbmy coś razem</h2>
-      <p>Otwarty na ciekawe projekty, współprace i współpracę B2B.</p>
-      <div class="contact-links">
-        <a href="https://github.com/draenger" class="btn btn-primary" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/daniel-kasprzyk/" class="btn btn-ghost" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://rezme.dev" class="btn btn-ghost" target="_blank">rezme.dev</a>
+  <section id="contact" style="position:relative; padding:160px 32px; text-align:center; overflow:hidden; border-top:1px solid rgba(157,184,255,.1)">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 120%, rgba(157,184,255,.12) 0%, transparent 60%); pointer-events:none"></div>
+    <div style="position:relative; z-index:1">
+      <p style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#9db8ff; margin:0 0 24px">Napisz do mnie</p>
+      <h2 style="font-size:clamp(36px,5vw,64px); font-weight:600; letter-spacing:-.025em; margin:0 0 20px; color:#f4f6fc">Zbudujmy coś razem.</h2>
+      <p style="font-size:16px; color:#a8aec4; margin:0 0 44px">Otwarty na ciekawe projekty, współprace i możliwości B2B.</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
+        <a href="https://github.com/draenger" target="_blank" class="btn-primary">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/daniel-kasprzyk/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+        <a href="https://rezme.dev" target="_blank" class="btn-outline">rezme.dev ↗</a>
       </div>
     </div>
   </section>
 
-  <footer>
-    <span>Daniel Kasprzyk</span> &middot; 2026
+  <footer style="padding:32px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; color:#565d75; border-top:1px solid rgba(233,236,245,.06)">
+    <span style="color:#9db8ff">Daniel Kasprzyk</span> · 2026 · Śląsk, PL
     <div class="lang-switch">
-      <span class="lang-active">PL</span>
-      <span class="lang-sep">|</span>
       <a href="/" onclick="switchLang('en'); return false;">EN</a>
+      <span class="lang-sep">|</span>
+      <span class="lang-active">PL</span>
     </div>
   </footer>
 
-  <script src="starfield.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="reveal.js"></script>
-  <script type="module" src="effects.js"></script>
+<script>
+(function () {
+  const canvas = document.getElementById('galaxy-canvas');
+  let particles = null, raf = null;
+  let dpr, w, h;
+
+  function setup(keep) {
+    if (!canvas) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    if (!keep || !particles) buildParticles();
+  }
+
+  function buildParticles() {
+    const N = Math.round(1500);
+    const arms = 3, twist = 2.6;
+    const parts = [];
+    for (let i = 0; i < N; i++) {
+      const r = Math.pow(Math.random(), 0.6);
+      const arm = i % arms;
+      const armAngle = (arm / arms) * Math.PI * 2;
+      const spread = (Math.random() - 0.5) * (0.35 + r * 0.35);
+      const a0 = armAngle + r * twist + spread;
+      const spd = (0.05 + 0.12 / (0.25 + r)) * 0.22;
+      const cold = Math.random();
+      parts.push({
+        r, a: a0, speed: spd,
+        size: Math.random() < 0.08 ? 1.6 : (0.5 + Math.random() * 0.8),
+        alpha: 0.25 + Math.random() * 0.65,
+        tw: Math.random() * Math.PI * 2,
+        hue: cold < 0.72 ? null : (cold < 0.9 ? '157,184,255' : '201,184,255')
+      });
+    }
+    particles = parts;
+  }
+
+  function draw(t) {
+    if (!canvas || !particles) return;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    const cx = w / 2, cy = h * 0.44;
+    const R = Math.min(w, h) * 0.72;
+    const tiltY = 0.42;
+    const rot = t * 0.02;
+
+    const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.32);
+    core.addColorStop(0, 'rgba(220,228,255,0.20)');
+    core.addColorStop(0.35, 'rgba(157,184,255,0.07)');
+    core.addColorStop(1, 'rgba(157,184,255,0)');
+    ctx.fillStyle = core;
+    ctx.fillRect(cx - R, cy - R, R * 2, R * 2);
+
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      const ang = p.a + rot + t * p.speed;
+      const rr = p.r * R;
+      const x = cx + Math.cos(ang) * rr;
+      const y = cy + Math.sin(ang) * rr * tiltY;
+      const twinkle = 0.75 + 0.25 * Math.sin(t * 1.4 + p.tw);
+      const a = p.alpha * twinkle * (1 - p.r * 0.35);
+      ctx.fillStyle = p.hue
+        ? 'rgba(' + p.hue + ',' + a.toFixed(3) + ')'
+        : 'rgba(235,240,255,' + a.toFixed(3) + ')';
+      const s = p.size;
+      ctx.fillRect(x - s / 2, y - s / 2, s, s);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  setup(false);
+  window.addEventListener('resize', () => setup(true));
+
+  (function loop(t) {
+    draw(t / 1000);
+    raf = requestAnimationFrame(loop);
+  })(0);
+})();
+</script>
 </body>
 </html>
