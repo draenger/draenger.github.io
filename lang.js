@@ -1,25 +1,33 @@
-// Language detection & switcher
+// Language detection & switcher.
+// EN lives at "/", PL at "/pl.html"; both are linked with hreflang, so crawlers index each
+// page on its own. The first-visit redirect below only runs for real visitors on "/".
 (function () {
-  const LANG_KEY = 'preferred-lang';
-  const saved = localStorage.getItem(LANG_KEY);
-  const isEN = location.pathname === '/' || location.pathname.endsWith('/index.html');
-  const isPL = location.pathname.endsWith('/pl.html');
+  var LANG_KEY = 'preferred-lang';
+  var path = location.pathname;
+  var isEN = path === '/' || path.endsWith('/index.html');
+  if (!isEN) return;
 
-  if (saved) return; // user already chose — don't redirect
+  var saved = null;
+  try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+  if (saved) return; // user already chose: don't redirect
 
-  // First visit: detect country via IP
+  // Never redirect crawlers, link-preview bots or automated browsers.
+  var ua = navigator.userAgent || '';
+  if (navigator.webdriver || /bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|lighthouse|headless/i.test(ua)) return;
+
+  // First visit: detect country via IP.
   fetch('https://get.geojs.io/v1/ip/country.json')
-    .then(r => r.json())
-    .then(data => {
-      if (data.country === 'PL' && isEN) {
-        localStorage.setItem(LANG_KEY, 'pl');
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.country === 'PL') {
+        try { localStorage.setItem(LANG_KEY, 'pl'); } catch (e) {}
         location.replace('pl.html');
       }
     })
-    .catch(() => {}); // silently fail — default to current page
+    .catch(function () {}); // silently fail: stay on the current page
 })();
 
 function switchLang(lang) {
-  localStorage.setItem('preferred-lang', lang);
+  try { localStorage.setItem('preferred-lang', lang); } catch (e) {}
   location.href = lang === 'pl' ? 'pl.html' : '/';
 }

@@ -3,61 +3,116 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daniel Kasprzyk — Senior Software Developer</title>
-<meta name="description" content="Senior Software Developer from Silesia, PL. 5+ years shipping software, 3 years deep in Generative AI.">
-<link rel="icon" type="image/png" href="logo.png">
-<meta property="og:title" content="Daniel Kasprzyk — Senior Software Developer">
-<meta property="og:description" content="Building AI agent systems & shipping SaaS products. Python, .NET, Azure AI, React.">
-<meta property="og:image" content="https://draenger.github.io/logo.png">
+<title>Daniel Kasprzyk — Senior Software Developer, AI systems</title>
+<meta name="description" content="Senior Software Developer from Silesia, Poland. Enterprise AI assistants and RAG systems on Azure by day; my own apps (Zryw, Whisperio, rezme, Jarvis) after hours.">
+<link rel="canonical" href="https://danielkasprzyk.com/">
+<link rel="alternate" hreflang="en" href="https://danielkasprzyk.com/">
+<link rel="alternate" hreflang="pl" href="https://danielkasprzyk.com/pl.html">
+<link rel="alternate" hreflang="x-default" href="https://danielkasprzyk.com/">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Daniel Kasprzyk — Senior Software Developer, AI systems">
+<meta property="og:description" content="Enterprise AI assistants and RAG on Azure by day; Zryw, Whisperio, rezme and Jarvis after hours.">
+<meta property="og:image" content="https://danielkasprzyk.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daniel Kasprzyk — Senior Software Developer">
 <meta property="og:url" content="https://danielkasprzyk.com/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://danielkasprzyk.com/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://danielkasprzyk.com/#person",
+      "name": "Daniel Kasprzyk",
+      "url": "https://danielkasprzyk.com/",
+      "image": "https://danielkasprzyk.com/og.png",
+      "jobTitle": "Senior Software Developer",
+      "address": { "@type": "PostalAddress", "addressRegion": "Silesia", "addressCountry": "PL" },
+      "knowsAbout": ["Generative AI", "Retrieval-augmented generation", "Azure", ".NET", "Python", "Semantic Kernel", "OpenTelemetry"],
+      "sameAs": ["https://github.com/draenger", "https://www.linkedin.com/in/daniel-kasprzyk/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://danielkasprzyk.com/#website",
+      "url": "https://danielkasprzyk.com/",
+      "name": "Daniel Kasprzyk",
+      "inLanguage": ["en", "pl"],
+      "publisher": { "@id": "https://danielkasprzyk.com/#person" }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="lang.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: #07080d; }
-  body { font-family: 'Space Grotesk', sans-serif; color: #e9ecf5; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Space Grotesk', sans-serif; color: #e9ecf5; -webkit-font-smoothing: antialiased; min-height: 100vh; overflow-x: hidden; }
   a { color: #9db8ff; text-decoration: none; }
   a:hover { color: #cfe0ff; }
   ::selection { background: rgba(157,184,255,.25); }
   html { scroll-behavior: smooth; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
 
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(180deg, rgba(7,8,13,.85), rgba(7,8,13,0)); backdrop-filter: blur(2px); }
+  .brand { font-size: 13px; letter-spacing: .22em; color: #e9ecf5; }
+  .nav-links { display: flex; gap: 36px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
   .nav-link { color: #8a90a8; transition: color .2s; }
   .nav-link:hover { color: #e9ecf5; }
+  .nav-cta { color: #e9ecf5; border-bottom: 1px solid rgba(157,184,255,.5); padding-bottom: 2px; }
 
-  .btn-primary {
+  .btn-primary, .btn-outline {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-    color: #07080d; background: #e9ecf5;
-    padding: 15px 32px; border-radius: 2px;
-    transition: background .2s, transform .2s;
+    border-radius: 2px;
   }
+  .btn-primary { color: #07080d; background: #e9ecf5; padding: 15px 32px; transition: background .2s, transform .2s; }
   .btn-primary:hover { background: #ffffff; transform: translateY(-2px); color: #07080d; }
-
-  .btn-outline {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-    color: #e9ecf5; border: 1px solid rgba(233,236,245,.25);
-    padding: 14px 32px; border-radius: 2px;
-    transition: border-color .2s, color .2s;
-  }
+  .btn-outline { color: #e9ecf5; border: 1px solid rgba(233,236,245,.25); padding: 14px 32px; transition: border-color .2s, color .2s; }
   .btn-outline:hover { border-color: rgba(157,184,255,.7); color: #cfe0ff; }
 
-  .project-card {
-    border: 1px solid rgba(233,236,245,.09);
-    border-radius: 4px; padding: 36px;
-    transition: border-color .2s, transform .2s;
-  }
-  .project-card:hover { border-color: rgba(157,184,255,.35); transform: translateY(-3px); }
+  .section { max-width: 1140px; margin: 0 auto; padding: 80px 32px; }
+  .section-head { display: flex; align-items: baseline; gap: 24px; margin-bottom: 56px; }
+  .section-num { font-size: 12px; letter-spacing: .3em; color: #9db8ff; }
+  .section-head h2 { font-size: clamp(32px,4vw,52px); font-weight: 600; letter-spacing: -.02em; margin: 0; color: #f4f6fc; }
 
+  .featured { border: 1px solid rgba(157,184,255,.18); border-radius: 4px; padding: 48px; margin-bottom: 20px; background: linear-gradient(135deg, rgba(157,184,255,.06), rgba(201,184,255,.03) 60%, transparent); }
+  .featured-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+  .featured h3 { font-size: 36px; font-weight: 600; margin: 14px 0 12px; color: #f4f6fc; letter-spacing: -.02em; }
+  .featured p { font-size: 16px; line-height: 1.7; color: #a8aec4; margin: 0; max-width: 600px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .project-card { display: flex; flex-direction: column; border: 1px solid rgba(233,236,245,.09); border-radius: 4px; padding: 36px; transition: border-color .2s, transform .2s; }
+  .project-card:hover { border-color: rgba(157,184,255,.35); transform: translateY(-3px); }
+  .project-card h3 { font-size: 22px; font-weight: 600; margin: 14px 0 10px; color: #f4f6fc; }
+  .project-card p { font-size: 14px; line-height: 1.7; color: #a8aec4; margin: 0 0 20px; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #9db8ff; }
+  .label.violet { color: #c9b8ff; }
+  .label.grey { color: #8a90a8; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tags span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a90a8; border: 1px solid rgba(138,144,168,.2); padding: 3px 10px; border-radius: 2px; }
+  .featured .tags { margin-top: 28px; }
+  .featured .tags span { font-size: 11px; padding: 4px 12px; border-color: rgba(138,144,168,.25); }
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
   .small-link {
     display: inline-block;
     font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em;
@@ -67,277 +122,241 @@
   }
   .small-link:hover { border-color: #9db8ff; color: #cfe0ff; }
 
+  .stack-line { border-top: 1px solid rgba(157,184,255,.1); border-bottom: 1px solid rgba(157,184,255,.1); padding: 18px 24px; }
+  .stack-line div { display: flex; gap: 14px 40px; justify-content: center; flex-wrap: wrap; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #565d75; }
+
+  .core-stack { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .core-stack span { display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .1em; color: #e9ecf5; border: 1px solid rgba(157,184,255,.22); padding: 10px 16px; border-radius: 2px; }
+  .core-stack svg { width: 18px; height: 18px; fill: #9db8ff; flex: none; }
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .skill-box { padding: 32px; border: 1px solid rgba(233,236,245,.09); border-radius: 4px; }
+  .skill-box h3 { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: .24em; text-transform: uppercase; color: #c9b8ff; margin: 0 0 20px; }
+  .skill-box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #a8aec4; }
+
+  .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: start; }
+  .about-text { font-size: 16px; line-height: 1.85; color: #a8aec4; }
+  .about-text p { margin: 0 0 18px; }
+  .about-text p:last-child { margin: 0; }
+  .about-text strong { color: #e9ecf5; font-weight: 500; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(233,236,245,.09); border: 1px solid rgba(233,236,245,.09); }
+  .stats div { background: #07080d; padding: 32px 24px; text-align: center; }
+  .stats b { display: block; font-size: 40px; font-weight: 600; color: #9db8ff; letter-spacing: -.02em; }
+  .stats small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #8a90a8; margin-top: 8px; }
+
+  .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 48px; }
+  .how-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #c9b8ff; margin-bottom: 16px; }
+  .how h3 { font-size: 20px; font-weight: 600; margin: 0 0 12px; color: #f4f6fc; }
+  .how p { font-size: 14px; line-height: 1.75; color: #a8aec4; margin: 0; }
+
+  footer { padding: 32px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em; color: #565d75; border-top: 1px solid rgba(233,236,245,.06); }
   .lang-switch { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em; }
   .lang-switch .lang-active { color: #9db8ff; }
   .lang-switch .lang-sep { color: #565d75; margin: 0 8px; }
-  .lang-switch a { color: #565d75; }
+  .lang-switch a { color: #8a90a8; }
   .lang-switch a:hover { color: #cfe0ff; }
 
   @media (max-width: 640px) {
-    nav { padding: 16px 20px !important; }
-    .nav-links { gap: 20px !important; }
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 16px; letter-spacing: .14em; }
     .hero-btns { flex-direction: column; align-items: center; }
+    .section { padding: 64px 16px; }
+    #projects.section { padding-top: 96px; }
+    .featured { padding: 28px 22px; }
+    .featured h3 { font-size: 30px; }
+    .grid { grid-template-columns: 1fr; }
+    .project-card { padding: 26px 22px; }
+    .stats b { font-size: 32px; }
+    #contact { padding: 112px 16px !important; }
   }
 </style>
 </head>
-<body style="background:#07080d; min-height:100vh; overflow-x:hidden">
+<body>
 
-  <!-- NAV -->
-  <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:linear-gradient(180deg, rgba(7,8,13,.85), rgba(7,8,13,0)); backdrop-filter:blur(2px)">
-    <div style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.22em; color:#e9ecf5">DK<span style="color:#9db8ff">·</span>DEV</div>
-    <div class="nav-links" style="display:flex; gap:36px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase">
+  <nav>
+    <div class="brand mono">DK<span style="color:#9db8ff">·</span>DEV</div>
+    <div class="nav-links mono">
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#skills" class="nav-link">Stack</a>
       <a href="#about" class="nav-link">About</a>
-      <a href="#contact" style="color:#e9ecf5; border-bottom:1px solid rgba(157,184,255,.5); padding-bottom:2px">Contact</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </div>
   </nav>
 
+  <main>
   <!-- HERO -->
   <section style="position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden">
-    <canvas id="galaxy-canvas" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
+    <canvas id="galaxy-canvas" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; display:block"></canvas>
     <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, rgba(7,8,13,0) 0%, rgba(7,8,13,.25) 55%, rgba(7,8,13,.92) 100%); pointer-events:none"></div>
 
     <div style="position:relative; z-index:2; text-align:center; padding:0 24px; max-width:920px; animation:fadeUp .9s .2s both">
-      <p style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:#9db8ff; margin:0 0 28px">Senior Software Developer — Silesia, PL</p>
-      <h1 style="font-size:clamp(48px, 7.5vw, 96px); font-weight:600; line-height:1.02; letter-spacing:-.03em; margin:0; color:#f4f6fc">Building systems<br>that <em style="font-style:normal; background:linear-gradient(90deg, #9db8ff, #c9b8ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent">actually ship</em>.</h1>
-      <p style="font-size:clamp(16px, 1.6vw, 19px); line-height:1.7; color:#a8aec4; max-width:560px; margin:32px auto 0">
-        I'm <strong style="color:#e9ecf5; font-weight:500">Daniel Kasprzyk</strong>. 5+ years shipping software,
-        3 years deep in Generative AI — building commercial multi-agent systems by day,
-        my own products by night.
+      <p class="mono" style="font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:#9db8ff; margin:0 0 28px">Senior Software Developer — Silesia, PL</p>
+      <h1 style="font-size:clamp(44px, 7.5vw, 96px); font-weight:600; line-height:1.02; letter-spacing:-.03em; margin:0; color:#f4f6fc">I build AI systems<br><em style="font-style:normal; background:linear-gradient(90deg, #9db8ff, #c9b8ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent">and ship them</em>.</h1>
+      <p style="font-size:clamp(16px, 1.6vw, 19px); line-height:1.7; color:#a8aec4; max-width:580px; margin:32px auto 0">
+        I'm <strong style="color:#e9ecf5; font-weight:500">Daniel Kasprzyk</strong>. By day I build enterprise
+        AI assistants and RAG systems on Azure. After hours I build my own apps and put them in front of users.
       </p>
       <div class="hero-btns" style="display:flex; gap:14px; justify-content:center; margin-top:44px; flex-wrap:wrap">
-        <a href="https://github.com/draenger" target="_blank" class="btn-primary">GitHub ↗</a>
-        <a href="#projects" class="btn-outline">View Projects</a>
+        <a href="#projects" class="btn-primary">See projects</a>
+        <a href="https://github.com/draenger" target="_blank" rel="noopener" class="btn-outline">GitHub ↗</a>
       </div>
     </div>
 
-    <div style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.3em; color:#565d75; text-transform:uppercase; z-index:2">scroll ↓</div>
+    <div class="mono" style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); font-size:10px; letter-spacing:.3em; color:#565d75; text-transform:uppercase; z-index:2">scroll ↓</div>
   </section>
 
-  <!-- MARQUEE STACK LINE -->
-  <div style="border-top:1px solid rgba(157,184,255,.1); border-bottom:1px solid rgba(157,184,255,.1); padding:18px 0; overflow:hidden; white-space:nowrap">
-    <div style="display:flex; gap:56px; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#565d75; flex-wrap:nowrap">
-      <span>Python</span><span>·</span><span>.NET 10</span><span>·</span><span>Azure AI</span><span>·</span><span>Agentic Framework</span><span>·</span><span>RAG</span><span>·</span><span>React</span><span>·</span><span>pgvector</span><span>·</span><span>Neo4j</span>
+  <!-- STACK LINE -->
+  <div class="stack-line">
+    <div class="mono">
+      <span>.NET</span><span>Python</span><span>Azure AI</span><span>Semantic Kernel</span><span>RAG</span><span>OpenTelemetry</span><span>React</span><span>Swift</span>
     </div>
   </div>
 
   <!-- PROJECTS -->
-  <section id="projects" style="max-width:1140px; margin:0 auto; padding:140px 32px 80px">
-    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">01</span>
-      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Things I've built</h2>
+  <section id="projects" class="section" style="padding-top:140px">
+    <div class="section-head">
+      <span class="section-num mono">01</span>
+      <h2>Projects</h2>
     </div>
 
-    <!-- Featured -->
-    <div style="border:1px solid rgba(157,184,255,.18); border-radius:4px; padding:48px; margin-bottom:20px; background:linear-gradient(135deg, rgba(157,184,255,.06), rgba(201,184,255,.03) 60%, transparent)">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px">
-        <div style="max-width:600px">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff">Featured · Unreleased</span>
-          <h3 style="font-size:36px; font-weight:600; margin:14px 0 12px; color:#f4f6fc; letter-spacing:-.02em">Rezme</h3>
-          <p style="font-size:16px; line-height:1.7; color:#a8aec4; margin:0">AI-powered CV platform. Upload a job offer → AI tailors your CV, generates a cover letter and scores the match. Multi-agent pipeline, built to actually ship.</p>
+    <article class="featured">
+      <div class="featured-row">
+        <div>
+          <span class="label violet">Fitness app · App Store review pending</span>
+          <h3>Zryw</h3>
+          <p>Workout tracker: log a set in two taps, follow a training plan and get feedback from an AI coach that reads your own log. Works offline. iPhone and Apple Watch first; Android, Wear OS and a web app are in progress.</p>
         </div>
-        <a href="https://rezme.dev" target="_blank" class="small-link">rezme.dev ↗</a>
+        <a href="https://zryw.app" target="_blank" rel="noopener" class="small-link">zryw.app ↗</a>
       </div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:28px">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">React 19</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">.NET 10</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Python</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Azure AI</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">pgvector</span>
-        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a90a8; border:1px solid rgba(138,144,168,.25); padding:4px 12px; border-radius:2px">Langfuse</span>
+      <div class="tags">
+        <span>SwiftUI</span><span>watchOS</span><span>Android</span><span>Wear OS</span><span>.NET API</span><span>PostgreSQL</span>
       </div>
-    </div>
+    </article>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px">
+    <div class="grid">
 
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9db8ff">Public site</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">AI News Digest</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Free public app for browsing AI &amp; LLM news. Scrapes sources, filters the signal, publishes daily and weekly digests.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">.NET 10</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Next.js</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Scraping</span>
+      <article class="project-card">
+        <span class="label">Live</span>
+        <h3>rezme</h3>
+        <p>AI CV builder. Paste a job offer: rezme tailors your CV to it, drafts a cover letter and keeps the result readable for applicant tracking systems (ATS).</p>
+        <div class="tags"><span>React</span><span>.NET</span><span>Python</span><span>Azure AI</span><span>pgvector</span></div>
+        <div class="links"><a href="https://rezme.dev" target="_blank" rel="noopener" class="small-link">rezme.dev ↗</a></div>
+      </article>
+
+      <article class="project-card">
+        <span class="label">Free · Source-available</span>
+        <h3>Whisperio</h3>
+        <p>Dictation: press a hotkey, speak, and the text is pasted into any app. Runs on your own AI key or offline Whisper models, no account. Desktop 1.5.0 for Windows, macOS and Linux; iOS in TestFlight, Android coming.</p>
+        <div class="tags"><span>Electron</span><span>Whisper</span><span>Swift</span><span>Speech-to-text</span></div>
+        <div class="links">
+          <a href="https://whisperio.danielkasprzyk.com/" target="_blank" rel="noopener" class="small-link">website ↗</a>
+          <a href="https://github.com/draenger/whisperio" target="_blank" rel="noopener" class="small-link">github ↗</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#9db8ff">Open source</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Whisperio</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Global dictation app for Windows. Press a hotkey → speak → text lands in any application. Pay-per-use, no subscription.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Windows</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">STT</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Python</span>
-        </div>
-        <a href="/whisperio/" class="small-link">whisperio ↗</a>
-      </div>
+      <article class="project-card">
+        <span class="label grey">Personal · Private</span>
+        <h3>Jarvis</h3>
+        <p>My personal AI assistant: a .NET hub on a VPS, an Electron desktop client with a holographic HUD across monitors, and an iOS app. It also runs Sentinel, a security scanner for my servers and repos, and Studio, a video editor and demo recorder.</p>
+        <div class="tags"><span>.NET</span><span>Electron</span><span>iOS</span><span>RAG</span><span>Voice</span></div>
+      </article>
 
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff">Unreleased</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Zryw</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Offline-first fitness tracker for iOS and Apple Watch, backed by a modular .NET API. Workout logging, AI coaching, progress analytics.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">SwiftUI</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Apple Watch</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">.NET API</span>
-        </div>
-      </div>
+      <article class="project-card">
+        <span class="label grey">Desktop · Research software</span>
+        <h3>Spektra</h3>
+        <p>Desktop app for analysing fluorescence spectra of blood serum (EEM / PARAFAC). Built for Zuzanna Buryan, who holds the copyright; I develop it.</p>
+        <div class="tags"><span>Electron</span><span>TypeScript</span><span>Python</span><span>PARAFAC</span></div>
+      </article>
 
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Personal · Closed source</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Suzie AI</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">My personal Jarvis. Desktop voice assistant with multi-agent architecture, STT/TTS, RAG, Spotify integration. Built on a custom agent framework developed from scratch.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Electron</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Python</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Neo4j</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">ElevenLabs</span>
-        </div>
-      </div>
+      <article class="project-card">
+        <span class="label grey">Guild Wars 2 · Personal</span>
+        <h3>Navigator</h3>
+        <p>Blish HUD module for Guild Wars 2. Reads your account through the official API and plans the next steps toward a goal such as a legendary weapon: requirements, materials and trading post prices.</p>
+        <div class="tags"><span>C#</span><span>Blish HUD</span><span>GW2 API</span></div>
+      </article>
 
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Personal · Building</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Kadr</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Native vertical video editor for Apple devices with on-device AI. Built for 9:16 workflows and fast, clean Apple-first editing.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Swift 6</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">iOS / macOS</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">On-device AI</span>
-        </div>
-        <a href="https://github.com/draenger/kadr" target="_blank" rel="noopener" class="small-link">github ↗</a>
-      </div>
-
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Private · Full stack</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Cashflow</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">Multi-surface finance product: Fastify backend, React web app, Expo mobile client. Document workflows and background jobs.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">React</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Fastify</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Expo</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:#8a90a8">Private · Web app</span>
-        <h3 style="font-size:22px; font-weight:600; margin:14px 0 10px; color:#f4f6fc">Lux</h3>
-        <p style="font-size:14px; line-height:1.7; color:#a8aec4; margin:0 0 20px">React/TypeScript web product built as a separate surface in the portfolio. Still private, but part of the stack.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">React</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">TypeScript</span>
-          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a90a8; border:1px solid rgba(138,144,168,.2); padding:3px 10px; border-radius:2px">Vite</span>
-        </div>
-      </div>
+      <article class="project-card">
+        <span class="label grey">In development · Private</span>
+        <h3>Kadr</h3>
+        <p>Vertical (9:16) video editor for iPhone, iPad and Mac with on-device AI, built only on Apple frameworks.</p>
+        <div class="tags"><span>Swift 6</span><span>iOS / macOS</span><span>On-device AI</span></div>
+      </article>
 
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" style="max-width:1140px; margin:0 auto; padding:80px 32px">
-    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">02</span>
-      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">What I work with</h2>
+  <!-- STACK -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <span class="section-num mono">02</span>
+      <h2>Stack</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px">
-      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
-        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">AI / Agents</h4>
-        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
-          <span>Microsoft Agentic Framework</span>
-          <span>AutoGen</span>
-          <span>Azure AI Foundry</span>
-          <span>RAG Systems</span>
-          <span>Custom Agent Framework</span>
-          <span>OpenTelemetry</span>
-        </div>
+    <div class="core-stack">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.379 23.343a1.62 1.62 0 0 0 1.536-2.14v.002L17.35 1.76A1.62 1.62 0 0 0 15.816.657H8.184A1.62 1.62 0 0 0 6.65 1.76L.086 21.204a1.62 1.62 0 0 0 1.536 2.139h4.741a1.62 1.62 0 0 0 1.535-1.103l.977-2.892 4.947 3.675c.28.208.618.32.966.32m-3.084-12.531 3.624 10.739a.54.54 0 0 1-.51.713v-.001h-.03a.54.54 0 0 1-.322-.106l-9.287-6.9h4.853m6.313 7.006c.116-.326.13-.694.007-1.058L9.79 1.76a1.722 1.722 0 0 0-.007-.02h6.034a.54.54 0 0 1 .512.366l6.562 19.445a.54.54 0 0 1-.338.684"/></svg>Azure</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L4.78 9.863a2.896 2.896 0 0 1-.258-.51h-.036c.032.189.048.592.048 1.21v5.772H3.157V7.53h1.659l3.965 6.32c.167.261.275.442.323.54h.024c-.04-.233-.06-.629-.06-1.185V7.529h1.372zm-8.703-.693a.868.829 0 0 1-.869.829.868.829 0 0 1-.868-.83.868.829 0 0 1 .868-.828.868.829 0 0 1 .869.829Z"/></svg>.NET</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>Python</span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-box">
+        <h3>AI / Agents</h3>
+        <ul><li>Semantic Kernel</li><li>Azure AI Foundry</li><li>Azure AI Search</li><li>RAG pipelines</li><li>OpenTelemetry tracing</li></ul>
       </div>
-      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
-        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Backend</h4>
-        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
-          <span>Python / FastAPI</span>
-          <span>.NET 10 / C#</span>
-          <span>PostgreSQL + pgvector</span>
-          <span>Neo4j</span>
-          <span>RabbitMQ</span>
-        </div>
+      <div class="skill-box">
+        <h3>Backend</h3>
+        <ul><li>.NET / C#</li><li>Python / FastAPI</li><li>PostgreSQL + pgvector</li><li>Neo4j</li><li>RabbitMQ</li></ul>
       </div>
-      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
-        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Frontend</h4>
-        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
-          <span>React 19</span>
-          <span>TypeScript</span>
-          <span>Electron</span>
-          <span>Tailwind CSS</span>
-        </div>
+      <div class="skill-box">
+        <h3>Apps</h3>
+        <ul><li>React / TypeScript</li><li>Electron</li><li>SwiftUI</li><li>Tailwind CSS</li></ul>
       </div>
-      <div style="background:#07080d; padding:32px; border:1px solid rgba(233,236,245,.09); border-radius:4px">
-        <h4 style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#c9b8ff; margin:0 0 20px">Tools</h4>
-        <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#a8aec4">
-          <span>Claude Code</span>
-          <span>Cursor</span>
-          <span>Docker</span>
-          <span>Azure</span>
-          <span>CI/CD</span>
-        </div>
+      <div class="skill-box">
+        <h3>Tools</h3>
+        <ul><li>Claude Code</li><li>Docker</li><li>Azure</li><li>GitHub Actions</li></ul>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" style="max-width:1140px; margin:0 auto; padding:80px 32px">
-    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">03</span>
-      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">Who I am</h2>
+  <section id="about" class="section">
+    <div class="section-head">
+      <span class="section-num mono">03</span>
+      <h2>About</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:56px; align-items:start">
-      <div style="font-size:16px; line-height:1.85; color:#a8aec4">
-        <p style="margin:0 0 18px">Senior Software Developer from <strong style="color:#e9ecf5; font-weight:500">Silesia, Poland</strong>. 5+ years in the industry, 3 years exploring Generative AI, last year building commercial GenAI solutions.</p>
-        <p style="margin:0 0 18px">Day job: enterprise multi-agent AI on <strong style="color:#e9ecf5; font-weight:500">Microsoft Agentic Framework</strong>. After hours: <strong style="color:#e9ecf5; font-weight:500">Rezme</strong>, a personal voice assistant, and open-source tools that solve real problems.</p>
-        <p style="margin:0">Looking for people building AI projects, collaborators, and good networking in the space.</p>
+    <div class="about">
+      <div class="about-text">
+        <p>Senior Software Developer based in <strong>Silesia, Poland</strong>. About five years of commercial work, three of them in AI and ML.</p>
+        <p><strong>Day job:</strong> enterprise AI assistants and RAG systems on Azure. I work in .NET and Python with Semantic Kernel and Azure AI Search, and I wire in OpenTelemetry tracing so every answer can be traced back to the retrieval and model calls behind it.</p>
+        <p><strong>After hours:</strong> I build and ship my own products (Zryw, Whisperio, rezme, Jarvis) with an AI agent setup that does much of the implementation while I review and test.</p>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(233,236,245,.09); border:1px solid rgba(233,236,245,.09)">
-        <div style="background:#07080d; padding:32px 24px; text-align:center">
-          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">5+</div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Years professional</div>
-        </div>
-        <div style="background:#07080d; padding:32px 24px; text-align:center">
-          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">3</div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Years in GenAI</div>
-        </div>
-        <div style="background:#07080d; padding:32px 24px; text-align:center">
-          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">8</div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Featured projects</div>
-        </div>
-        <div style="background:#07080d; padding:32px 24px; text-align:center">
-          <div style="font-size:40px; font-weight:600; color:#9db8ff; letter-spacing:-.02em">∞</div>
-          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8a90a8; margin-top:8px">Ideas in backlog</div>
-        </div>
+      <div class="stats">
+        <div><b>~5</b><small>Years commercial</small></div>
+        <div><b>~3</b><small>Years in AI / ML</small></div>
+        <div><b>7</b><small>Projects on this page</small></div>
+        <div><b>3</b><small>Public product sites</small></div>
       </div>
     </div>
   </section>
 
-  <!-- HOW I BUILD -->
-  <section style="max-width:1140px; margin:0 auto; padding:80px 32px">
-    <div style="display:flex; align-items:baseline; gap:24px; margin-bottom:64px">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; color:#9db8ff">04</span>
-      <h2 style="font-size:clamp(32px,4vw,52px); font-weight:600; letter-spacing:-.02em; margin:0; color:#f4f6fc">How I build</h2>
+  <!-- HOW I WORK -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num mono">04</span>
+      <h2>How I work</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:48px">
+    <div class="how">
       <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">01 —</div>
-        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">Architecture first</h3>
-        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Systems that scale without turning into ceremony. Clear boundaries, clean flows, fewer surprises.</p>
+        <div class="how-num">01 —</div>
+        <h3>Small, checked steps</h3>
+        <p>Every change goes through a build, tests and a run of the real flow before it counts as done.</p>
       </div>
       <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">02 —</div>
-        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">AI where it matters</h3>
-        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Agentic UX, retrieval, orchestration and evaluation only when it actually improves the product.</p>
+        <div class="how-num">02 —</div>
+        <h3>AI only where it helps</h3>
+        <p>LLM features get evaluations and tracing. If a plain rule does the job, it stays a plain rule.</p>
       </div>
       <div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9b8ff; margin-bottom:16px">03 —</div>
-        <h3 style="font-size:20px; font-weight:600; margin:0 0 12px; color:#f4f6fc">Polish is leverage</h3>
-        <p style="font-size:14px; line-height:1.75; color:#a8aec4; margin:0">Micro-interactions, motion and layout hierarchy that make the product feel finished, not assembled.</p>
+        <div class="how-num">03 —</div>
+        <h3>Release, then iterate</h3>
+        <p>Apps go to real stores and servers with real users, then get better from feedback.</p>
       </div>
     </div>
   </section>
@@ -346,23 +365,23 @@
   <section id="contact" style="position:relative; padding:160px 32px; text-align:center; overflow:hidden; border-top:1px solid rgba(157,184,255,.1)">
     <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 50% 120%, rgba(157,184,255,.12) 0%, transparent 60%); pointer-events:none"></div>
     <div style="position:relative; z-index:1">
-      <p style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#9db8ff; margin:0 0 24px">Get in touch</p>
-      <h2 style="font-size:clamp(36px,5vw,64px); font-weight:600; letter-spacing:-.025em; margin:0 0 20px; color:#f4f6fc">Let's build something.</h2>
-      <p style="font-size:16px; color:#a8aec4; margin:0 0 44px">Open to interesting projects, collaborations, and B2B opportunities.</p>
+      <p class="mono" style="font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:#9db8ff; margin:0 0 24px">Contact</p>
+      <h2 style="font-size:clamp(36px,5vw,64px); font-weight:600; letter-spacing:-.025em; margin:0 0 20px; color:#f4f6fc">Get in touch.</h2>
+      <p style="font-size:16px; color:#a8aec4; margin:0 0 44px">Open to AI projects, collaborations and B2B contracts.</p>
       <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap">
-        <a href="https://github.com/draenger" target="_blank" class="btn-primary">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/daniel-kasprzyk/" target="_blank" class="btn-outline">LinkedIn ↗</a>
-        <a href="https://rezme.dev" target="_blank" class="btn-outline">rezme.dev ↗</a>
+        <a href="https://www.linkedin.com/in/daniel-kasprzyk/" target="_blank" rel="noopener" class="btn-primary">LinkedIn ↗</a>
+        <a href="https://github.com/draenger" target="_blank" rel="noopener" class="btn-outline">GitHub ↗</a>
       </div>
     </div>
   </section>
+  </main>
 
-  <footer style="padding:32px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; color:#565d75; border-top:1px solid rgba(233,236,245,.06)">
+  <footer>
     <span style="color:#9db8ff">Daniel Kasprzyk</span> · 2026 · Silesia, PL
     <div class="lang-switch">
       <span class="lang-active">EN</span>
       <span class="lang-sep">|</span>
-      <a href="pl.html" onclick="switchLang('pl'); return false;">PL</a>
+      <a href="pl.html" hreflang="pl" lang="pl" onclick="switchLang('pl'); return false;">PL</a>
     </div>
   </footer>
 
@@ -441,11 +460,13 @@
     ctx.globalCompositeOperation = 'source-over';
   }
 
+  // Draw one static frame when the user prefers reduced motion; skip drawing while the tab is hidden.
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   setup(false);
-  window.addEventListener('resize', () => setup(true));
-
+  window.addEventListener('resize', () => { setup(true); if (reduce) draw(0); });
+  if (reduce) { draw(0); return; }
   (function loop(t) {
-    draw(t / 1000);
+    if (!document.hidden) draw(t / 1000);
     raf = requestAnimationFrame(loop);
   })(0);
 })();
